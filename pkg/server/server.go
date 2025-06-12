@@ -35,5 +35,6 @@ func (s *MCPServer) ListenAndServe(addr string) error {
 	log.Println("Server starting on", addr, "with endpoint:", s.endpoint)
 	return srv.NewSSEServer(s.server,
 		srv.WithSSEEndpoint(s.endpoint),
+		srv.WithMessageEndpoint(s.endpoint+"/message"),
 	).Start(addr)
 }
